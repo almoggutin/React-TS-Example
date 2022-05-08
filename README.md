@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-<h1 align="center">React JS Example</h1>
+<h1 align="center">React TS Example</h1>
 
 <div align="center">
   <p align="center">
@@ -52,7 +52,7 @@ It is built with the React library to build a single page application, for this 
 **Git clone**
 
 ```
-git clone https://github.com/almoggutin/React-JS-Example.git
+git clone https://github.com/almoggutin/React-TS-Example.git
 ```
 
 **Instructions**
