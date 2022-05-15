@@ -1,7 +1,7 @@
 import * as storageUtils from '../utils/storage.utils';
 
 import Task, { ITask } from '../models/task.model';
-import { IErrorResponse, ISuccessResponse } from '../models/response.model';
+import { Response, ISuccessResponse } from '../models/response.model';
 
 export const getTasks = async (userID: string): Promise<ISuccessResponse> => {
     const tasksCollection: ITask[] = storageUtils.getTasksCollectionFromSessionStorage();
@@ -22,7 +22,7 @@ export const createTask = async (userID: string, task: string): Promise<ISuccess
     return { status: 201, statusText: 'Created', data: { task: taskDoc } };
 };
 
-export const updateTask = async (taskID: string, isCompleted: boolean): Promise<ISuccessResponse | IErrorResponse> => {
+export const updateTask = async (taskID: string, isCompleted: boolean): Promise<Response> => {
     const tasksCollection: ITask[] = storageUtils.getTasksCollectionFromSessionStorage();
 
     const task: ITask | undefined = tasksCollection.find((taskDoc: ITask) => taskDoc._id === taskID);

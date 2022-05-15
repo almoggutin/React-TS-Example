@@ -1,8 +1,8 @@
 import LoginFormActionTypes from '../actions/login-form.actions';
-import { ILoginFormState, IUpdateLoginFormFieldAction } from '../models/login-form.model';
+import { LoginFormState, LoginFormActions } from '../models/login-form.model';
 import * as formUtils from '../utils/form.utils';
 
-export const LOGIN_FORM_INITIAL_STATE: ILoginFormState = {
+export const LOGIN_FORM_INITIAL_STATE: LoginFormState = {
     values: {
         email: '',
         password: '',
@@ -18,7 +18,7 @@ export const LOGIN_FORM_INITIAL_STATE: ILoginFormState = {
     isFormValid: false,
 };
 
-const loginFormReducer = (state: ILoginFormState, action: IUpdateLoginFormFieldAction) => {
+const loginFormReducer = (state: LoginFormState, action: LoginFormActions): LoginFormState => {
     switch (action.type) {
         case LoginFormActionTypes.UPDATE_EMAIL: {
             const { value, isValid, errorMessage } = action.payload;
@@ -53,7 +53,7 @@ const loginFormReducer = (state: ILoginFormState, action: IUpdateLoginFormFieldA
             };
         }
         default:
-            return { ...state };
+            return state;
     }
 };
 

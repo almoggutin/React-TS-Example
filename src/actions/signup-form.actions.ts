@@ -11,7 +11,7 @@ enum SignupFormActionTypes {
 export const updateFormFieldAction = (
     type: SignupFormActionTypes,
     value: string,
-    isValid: boolean,
+    isValid: boolean = true,
     errorMessage: string = ''
 ): IUpdateSignupFormFieldAction => ({
     type,

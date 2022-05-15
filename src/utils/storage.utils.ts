@@ -1,6 +1,7 @@
 import * as constants from '../constants/constants';
 import { IUserData, IUser } from '../models/user.model';
 import { ITask } from '../models/task.model';
+import { IAuthState } from '../models/auth.model';
 
 export const setUserDataOnSessionStorage = (userData: IUserData): void => {
     sessionStorage.setItem(constants.USER_DATA, JSON.stringify(userData));
@@ -10,11 +11,11 @@ export const removeUserDataFromSessionStorage = (): void => {
     sessionStorage.removeItem(constants.USER_DATA);
 };
 
-export const getUserFromSessionStorage = () => {
+export const getUserFromSessionStorage = (): IAuthState | null => {
     const jsonUserData: string | null = sessionStorage.getItem(constants.USER_DATA);
     if (jsonUserData == null) return null;
 
-    const userData: IUser = JSON.parse(jsonUserData);
+    const userData: IAuthState = JSON.parse(jsonUserData);
     return userData;
 };
 
@@ -25,7 +26,7 @@ export const createUsersCollectionOnSessionStorage = (): void => {
     sessionStorage.setItem(constants.USERS_COLLECTION, jsonUsersCollection);
 };
 
-export const getUsersCollectionFromSessionStorage = (): any => {
+export const getUsersCollectionFromSessionStorage = (): IUser[] => {
     const jsonUsersCollection: string | null = sessionStorage.getItem(constants.USERS_COLLECTION);
     if (!jsonUsersCollection) return [];
 
@@ -48,7 +49,7 @@ export const createTasksCollectionOnSessionStorage = (): void => {
     sessionStorage.setItem(constants.TASKS_COLLECTION, jsonTasksCollection);
 };
 
-export const getTasksCollectionFromSessionStorage = (): any => {
+export const getTasksCollectionFromSessionStorage = (): ITask[] => {
     const jsonTasksCollection: string | null = sessionStorage.getItem(constants.TASKS_COLLECTION);
     if (!jsonTasksCollection) return [];
 

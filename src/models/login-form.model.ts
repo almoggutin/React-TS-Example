@@ -24,3 +24,6 @@ export interface IUpdateLoginFormFieldAction {
         errorMessage: string;
     };
 }
+export type LoginFormState = ILoginFormState;
+
+export type LoginFormActions = IUpdateLoginFormFieldAction;

@@ -8,7 +8,7 @@ enum LoginFormActionTypes {
 export const updateFormFieldAction = (
     type: LoginFormActionTypes,
     value: string,
-    isValid: boolean,
+    isValid: boolean = true,
     errorMessage: string = ''
 ): IUpdateLoginFormFieldAction => ({
     type,

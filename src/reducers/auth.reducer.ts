@@ -1,11 +1,9 @@
-import { IAuthState, ILoginAction, ILogoutAction } from '../models/auth.model';
+import { AuthState, AuthActions } from '../models/auth.model';
 import AuthActionTypes from '../actions/auth.actions';
 
-type AuthActions = ILoginAction | ILogoutAction;
+export const AUTH_INITIAL_STATE: AuthState = null;
 
-export const AUTH_INITIAL_STATE: IAuthState | null = null;
-
-const authReducer = (state: IAuthState, action: AuthActions) => {
+const authReducer = (state: AuthState, action: AuthActions): AuthState => {
     switch (action.type) {
         case AuthActionTypes.LOGIN: {
             const { userID } = action.payload;
@@ -16,7 +14,7 @@ const authReducer = (state: IAuthState, action: AuthActions) => {
             return AUTH_INITIAL_STATE;
         }
         default:
-            return { ...state };
+            return state;
     }
 };
 

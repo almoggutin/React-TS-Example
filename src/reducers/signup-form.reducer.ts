@@ -1,8 +1,8 @@
 import signupFormActionTypes from '../actions/signup-form.actions';
-import { ISignupFormState, IUpdateSignupFormFieldAction } from '../models/signup-form.model';
+import { SignupFormState, SignupFormActions } from '../models/signup-form.model';
 import * as formUtils from '../utils/form.utils';
 
-export const SIGNUP_FORM_INITIAL_STATE: ISignupFormState = {
+export const SIGNUP_FORM_INITIAL_STATE: SignupFormState = {
     values: {
         firstName: '',
         lastName: '',
@@ -27,7 +27,7 @@ export const SIGNUP_FORM_INITIAL_STATE: ISignupFormState = {
     isFormValid: false,
 };
 
-const signupFormReducer = (state: ISignupFormState, action: IUpdateSignupFormFieldAction) => {
+const signupFormReducer = (state: SignupFormState, action: SignupFormActions): SignupFormState => {
     switch (action.type) {
         case signupFormActionTypes.UPDATE_FIRST_NAME: {
             const { value, isValid, errorMessage } = action.payload;
@@ -110,7 +110,7 @@ const signupFormReducer = (state: ISignupFormState, action: IUpdateSignupFormFie
             };
         }
         default:
-            return { ...state };
+            return state;
     }
 };
 

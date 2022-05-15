@@ -18,21 +18,21 @@ class Task implements ITask {
 }
 
 export interface IInitTasksAction {
-    type: TasksActionTypes;
+    type: TasksActionTypes.INIT_TASKS;
     payload: {
         tasks: ITask[];
     };
 }
 
 export interface IAddTaskAction {
-    type: TasksActionTypes;
+    type: TasksActionTypes.ADD_TASK;
     payload: {
         task: ITask;
     };
 }
 
 export interface IUpdateTaskAction {
-    type: TasksActionTypes;
+    type: TasksActionTypes.UPDATE_TASK;
     payload: {
         index: number;
         isCompleted: boolean;
@@ -40,10 +40,21 @@ export interface IUpdateTaskAction {
 }
 
 export interface IDeleteTaskAction {
-    type: TasksActionTypes;
+    type: TasksActionTypes.DELETE_TASK;
     payload: {
         index: number;
     };
 }
+
+export interface ITasksContext {
+    tasksState: ITask[];
+    updateTasksState: (action: TaskActions) => void;
+}
+
+export type TasksContextType = ITasksContext | null;
+
+export type TasksState = ITask[];
+
+export type TaskActions = IInitTasksAction | IAddTaskAction | IUpdateTaskAction | IDeleteTaskAction;
 
 export default Task;

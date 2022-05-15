@@ -33,3 +33,7 @@ export interface IUpdateSignupFormFieldAction {
         errorMessage: string;
     };
 }
+
+export type SignupFormState = ISignupFormState;
+
+export type SignupFormActions = IUpdateSignupFormFieldAction;

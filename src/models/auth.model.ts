@@ -5,12 +5,23 @@ export interface IAuthState {
 }
 
 export interface ILoginAction {
-    type: AuthActionTypes;
+    type: AuthActionTypes.LOGIN;
     payload: {
         userID: string;
     };
 }
 
 export interface ILogoutAction {
-    type: AuthActionTypes;
+    type: AuthActionTypes.LOGOUT;
 }
+
+export interface IAuthContext {
+    authState: AuthState;
+    updateAuthState: (action: AuthActions) => void;
+}
+
+export type AuthContextType = IAuthContext | null;
+
+export type AuthState = IAuthState | null;
+
+export type AuthActions = ILoginAction | ILogoutAction;

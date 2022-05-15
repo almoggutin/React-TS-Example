@@ -1,11 +1,11 @@
 import _ from 'lodash';
 
 import tasksActionTypes from '../actions/tasks.actions';
-import { ITask } from '../models/task.model';
+import { TasksState, TaskActions } from '../models/task.model';
 
-export const TASKS_INITIAL_STATE: ITask[] = [];
+export const TASKS_INITIAL_STATE: TasksState = [];
 
-const tasksReducer = (state: ITask[], action) => {
+const tasksReducer = (state: TasksState, action: TaskActions): TasksState => {
     switch (action.type) {
         case tasksActionTypes.INIT_TASKS: {
             const { tasks } = action.payload;
@@ -37,7 +37,7 @@ const tasksReducer = (state: ITask[], action) => {
             return updatedTasks;
         }
         default:
-            return { ...state };
+            return state;
     }
 };
 
