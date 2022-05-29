@@ -6,7 +6,7 @@ const useLoader = (): boolean => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect((): void => {
-        setTimeout(() => {
+        setTimeout((): void => {
             setIsLoading(false);
         }, LOADER_TIMEOUT);
     }, []);

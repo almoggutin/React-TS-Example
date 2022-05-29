@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext } from 'react';
 import './add-tasks-form.styles.scss';
 
 import { AuthContext } from '../../../contexts/Auth.context';

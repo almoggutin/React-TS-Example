@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import { useReducer, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import isEmail from 'validator/lib/isEmail';
 import './signup-form.styles.scss';
@@ -29,18 +29,13 @@ const SignupForm = () => {
 
         if (firstNameInput === '') {
             dispatchSignupFormState(
-                updateFormFieldAction(
-                    signupFormActionTypes.UPDATE_FIRST_NAME,
-                    firstNameInput,
-                    false,
-                    'Please enter your first name'
-                )
+                updateFormFieldAction('firstName', firstNameInput, false, 'Please enter your first name')
             );
 
             return;
         }
 
-        dispatchSignupFormState(updateFormFieldAction(signupFormActionTypes.UPDATE_FIRST_NAME, firstNameInput));
+        dispatchSignupFormState(updateFormFieldAction('firstName', firstNameInput));
     };
 
     const handleLastNameInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -48,50 +43,33 @@ const SignupForm = () => {
 
         if (lastNameInput === '') {
             dispatchSignupFormState(
-                updateFormFieldAction(
-                    signupFormActionTypes.UPDATE_LAST_NAME,
-                    lastNameInput,
-                    false,
-                    'Please enter your last name'
-                )
+                updateFormFieldAction('lastName', lastNameInput, false, 'Please enter your last name')
             );
 
             return;
         }
 
-        dispatchSignupFormState(updateFormFieldAction(signupFormActionTypes.UPDATE_LAST_NAME, lastNameInput));
+        dispatchSignupFormState(updateFormFieldAction('lastName', lastNameInput));
     };
 
     const handleEmailInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const emailInput = event.target.value.toLowerCase().trim();
 
         if (emailInput === '') {
-            dispatchSignupFormState(
-                updateFormFieldAction(
-                    signupFormActionTypes.UPDATE_EMAIL,
-                    emailInput,
-                    false,
-                    'Please enter an email address'
-                )
-            );
+            dispatchSignupFormState(updateFormFieldAction('email', emailInput, false, 'Please enter an email address'));
 
             return;
         }
 
         if (!isEmail(emailInput)) {
             dispatchSignupFormState(
-                updateFormFieldAction(
-                    signupFormActionTypes.UPDATE_EMAIL,
-                    emailInput,
-                    false,
-                    'Please enter a valid email address'
-                )
+                updateFormFieldAction('email', emailInput, false, 'Please enter a valid email address')
             );
 
             return;
         }
 
-        dispatchSignupFormState(updateFormFieldAction(signupFormActionTypes.UPDATE_EMAIL, emailInput, true));
+        dispatchSignupFormState(updateFormFieldAction('email', emailInput, true));
     };
 
     const handlePasswordInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -99,12 +77,7 @@ const SignupForm = () => {
 
         if (passwordInput === '') {
             dispatchSignupFormState(
-                updateFormFieldAction(
-                    signupFormActionTypes.UPDATE_PASSWORD,
-                    passwordInput,
-                    false,
-                    'Please enter your password'
-                )
+                updateFormFieldAction('password', passwordInput, false, 'Please enter your password')
             );
 
             return;
@@ -114,7 +87,7 @@ const SignupForm = () => {
         if (!passwordRegex.test(passwordInput)) {
             dispatchSignupFormState(
                 updateFormFieldAction(
-                    signupFormActionTypes.UPDATE_PASSWORD,
+                    'password',
                     passwordInput,
                     false,
                     'Please enter a password between 8-20 characters with at least 1 capital letter and 1 number'
@@ -124,7 +97,7 @@ const SignupForm = () => {
             return;
         }
 
-        dispatchSignupFormState(updateFormFieldAction(signupFormActionTypes.UPDATE_PASSWORD, passwordInput, true));
+        dispatchSignupFormState(updateFormFieldAction('password', passwordInput, true));
     };
 
     const handleRepeatedPasswordInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -132,20 +105,13 @@ const SignupForm = () => {
 
         if (repeatedPasswordInput === '' || repeatedPasswordInput !== signupFormState.values.password) {
             dispatchSignupFormState(
-                updateFormFieldAction(
-                    signupFormActionTypes.UPDATE_REPEATED_PASSWORD,
-                    repeatedPasswordInput,
-                    false,
-                    'Please retype your password'
-                )
+                updateFormFieldAction('repeatedPassword', repeatedPasswordInput, false, 'Please retype your password')
             );
 
             return;
         }
 
-        dispatchSignupFormState(
-            updateFormFieldAction(signupFormActionTypes.UPDATE_REPEATED_PASSWORD, repeatedPasswordInput)
-        );
+        dispatchSignupFormState(updateFormFieldAction('repeatedPassword', repeatedPasswordInput));
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {

@@ -16,9 +16,11 @@ export interface ILoginFormState {
     isFormValid: boolean;
 }
 
+export type loginFormInputTypes = 'email' | 'password';
 export interface IUpdateLoginFormFieldAction {
-    type: LoginFormActionTypes;
+    type: LoginFormActionTypes.UPDATE_FORM_FIELD;
     payload: {
+        inputType: loginFormInputTypes;
         value: string;
         isValid: boolean;
         errorMessage: string;

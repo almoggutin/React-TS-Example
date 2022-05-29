@@ -1,21 +1,18 @@
-import { IUpdateSignupFormFieldAction } from '../models/signup-form.model';
+import { IUpdateSignupFormFieldAction, signupFormInputTypes } from '../models/signup-form.model';
 
 enum SignupFormActionTypes {
-    UPDATE_FIRST_NAME = 'UPDATE_FIRST_NAME',
-    UPDATE_LAST_NAME = 'UPDATE_LAST_NAME',
-    UPDATE_EMAIL = 'UPDATE_EMAIL',
-    UPDATE_PASSWORD = 'UPDATE_PASSWORD',
-    UPDATE_REPEATED_PASSWORD = 'UPDATE_REPEATED_PASSWORD',
+    UPDATE_FORM_FIELD = 'UPDATE_REPEATED_PASSWORD',
 }
 
 export const updateFormFieldAction = (
-    type: SignupFormActionTypes,
+    inputType: signupFormInputTypes,
     value: string,
     isValid: boolean = true,
     errorMessage: string = ''
 ): IUpdateSignupFormFieldAction => ({
-    type,
+    type: SignupFormActionTypes.UPDATE_FORM_FIELD,
     payload: {
+        inputType,
         value,
         isValid,
         errorMessage,

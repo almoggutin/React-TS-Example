@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import './tasks-page.styles.scss';
 
 import Loader from '../../components/shared/loader/Loader.component';

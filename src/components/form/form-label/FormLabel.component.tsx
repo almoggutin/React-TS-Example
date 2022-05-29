@@ -1,4 +1,3 @@
-import React from 'react';
 import './form-label.styles.scss';
 
 type Props = {

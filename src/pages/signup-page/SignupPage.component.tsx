@@ -1,14 +1,13 @@
-import React from 'react';
 import './signup-page.styles.scss';
 
 import Loader from '../../components/shared/loader/Loader.component';
-import useLoader from '../../hooks/useLoader.hook';
+import useAuth from '../../hooks/useAuth.hooks';
 
 import Card from '../../components/card/Card.component';
 import SignupForm from './signup-form/SignupForm.component';
 
 const SignupPage = () => {
-    const isLoading: boolean = useLoader();
+    const isLoading: boolean = useAuth();
 
     return isLoading ? (
         <Loader />

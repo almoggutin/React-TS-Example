@@ -25,9 +25,12 @@ export interface ISignupFormState {
     isFormValid: boolean;
 }
 
+export type signupFormInputTypes = 'firstName' | 'lastName' | 'email' | 'password' | 'repeatedPassword';
+
 export interface IUpdateSignupFormFieldAction {
-    type: SignupFormActionTypes;
+    type: SignupFormActionTypes.UPDATE_FORM_FIELD;
     payload: {
+        inputType: signupFormInputTypes;
         value: string;
         isValid: boolean;
         errorMessage: string;

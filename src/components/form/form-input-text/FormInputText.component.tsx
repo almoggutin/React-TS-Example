@@ -1,4 +1,3 @@
-import React from 'react';
 import './form-input-text.styles.scss';
 
 type Props = {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link, useNavigate, NavigateFunction } from 'react-router-dom';
 import './sidebar.styles.scss';
 

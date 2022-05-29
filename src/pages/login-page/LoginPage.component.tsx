@@ -1,8 +1,7 @@
-import React from 'react';
 import './login-page.styles.scss';
 
 import Loader from '../../components/shared/loader/Loader.component';
-import useLoader from '../../hooks/useLoader.hook';
+import useAuth from '../../hooks/useAuth.hooks';
 
 import Card from '../../components/card/Card.component';
 import LoginForm from './login-form/LoginForm.component';
@@ -10,7 +9,7 @@ import LoginForm from './login-form/LoginForm.component';
 type Props = {};
 
 const LoginPage = () => {
-    const isLoading: boolean = useLoader();
+    const isLoading: boolean = useAuth();
 
     return isLoading ? (
         <Loader />
